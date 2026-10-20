@@ -48,9 +48,9 @@ Check whether the container is running:
 docker ps
 ```
 
-Check the HTTP response:
+Check the HTTP response in Windows PowerShell:
 
-```bash
+```powershell
 curl.exe -I http://localhost:8080
 ```
 
@@ -89,3 +89,4 @@ If the website does not load, check the container status and logs. Confirm that 
 ## 9. Project Notes
 
 This project uses the existing BurgerHub website files. Docker and Nginx are used to package and serve the website without changing its original features.
+~
