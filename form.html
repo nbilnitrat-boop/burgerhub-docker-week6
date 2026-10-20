@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BurgerHub - Forms</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+<header>
+  <h1>Burger Hub</h1>
+  <nav>
+    <a href="form.html" class="active">Register</a>
+    <a href="home.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="promotions.html">Promotions</a>
+    <a href="location.html">Location</a>
+    <a href="myorder.html">My Order</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactUs.html">Contact Us</a>
+    <a href="cart.html" class="cart-link">🛒 Cart (<span id="cartCount">0</span>)</a>
+  </nav>
+</header>
+
+<main class="auth-container">
+
+  <div class="auth-box">
+
+
+    <div id="registerBox">
+      <h2>Register</h2>
+      <input id="regUser" type="text" placeholder="Username" required>
+      <input id="regEmail" type="email" placeholder="Email" required>
+      <input id="regPass" type="password" placeholder="Password" required>
+      <button id="registerBtn">Register</button>
+    </div>
+
+ 
+    <div id="loginBox" class="hidden">
+      <h2>Login</h2>
+      <input id="loginUser" type="text" placeholder="Username" required>
+      <input id="loginPass" type="password" placeholder="Password" required>
+      <button id="loginBtn">Login</button>
+      <span class="forgot-link" id="forgotBtn">Forgot password?</span>
+    </div>
+
+
+    <div id="forgotBox" class="hidden">
+      <h2>Reset Password</h2>
+      <input id="forgotEmail" type="email" placeholder="Enter your email" required>
+      <button id="resetBtn">Send Reset Link</button>
+    </div>
+
+  </div>
+
+</main>
+
+<script>
+let savedUsername = "";
+let savedPassword = "";
+
+
+document.getElementById("registerBtn").onclick = function () {
+  savedUsername = document.getElementById("regUser").value;
+  savedPassword = document.getElementById("regPass").value;
+
+  alert("Registration successful! Please log in.");
+
+  
+  document.getElementById("registerBox").classList.add("hidden");
+  document.getElementById("loginBox").classList.remove("hidden");
+};
+
+
+document.getElementById("loginBtn").onclick = function () {
+  let u = document.getElementById("loginUser").value;
+  let p = document.getElementById("loginPass").value;
+
+  if (u === savedUsername && p === savedPassword) {
+    alert("Login successful!");
+    window.location.href = "home.html";
+  } else {
+    alert("Wrong password! Try again or reset.");
+  }
+};
+
+
+document.getElementById("forgotBtn").onclick = function () {
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("forgotBox").classList.remove("hidden");
+};
+
+document.getElementById("resetBtn").onclick = function () {
+  alert("Password reset link sent!");
+  
+
+  document.getElementById("forgotBox").classList.add("hidden");
+  document.getElementById("loginBox").classList.remove("hidden");
+};
+</script>

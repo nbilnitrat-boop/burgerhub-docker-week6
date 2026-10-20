@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - BurgerHub</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+<header>
+  <h1>Burger Hub</h1>
+  <nav>
+    <a href="form.html">Register</a>
+    <a href="home.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="promotions.html">Promotions</a>
+    <a href="location.html">Location</a>
+    <a href="myorder.html">My Order</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactUs.html" class="active">Contact Us</a>
+    <a href="cart.html" class="cart-link">🛒 Cart (<span id="cartCount">0</span>)</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="contact-box">
+    <h2>Contact Us</h2>
+    <p>We’ll get back to you as soon as possible.</p>
+
+    <form id="contactForm">
+      <input type="text" id="conName" placeholder="Your Name" required>
+      <input type="email" id="conEmail" placeholder="Email Address" required>
+      <textarea id="conMsg" placeholder="Your Message..." rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+</main>
+
+<script>
+$(document).ready(function () {
+
+  // FOCUS EVENT
+  $("input, textarea").focus(function () {
+    $(this).css("border-color", "#ff9800");
+  }).blur(function () {
+    $(this).css("border-color", "#ccc");
+  });
+
+  // KEYPRESS EVENT
+  $("#conMsg").keypress(function () {
+    $(this).css("background-color", "#fff7c4");
+  });
+
+  // MOUSEMOVE EVENT
+  $(document).mousemove(function () {
+    $("header").css("background-color", "#ffb84d");
+  });
+
+  // CLICK EVENT
+  $("button").click(function () {
+    console.log("Contact form button clicked");
+  });
+
+  // SUBMIT EVENT
+  $("#contactForm").submit(function (e) {
+    e.preventDefault();
+    alert("Message sent! We will reply soon.");
+    window.location.href = "home.html";
+  });
+
+});
+</script>
+
+</body>
+</html>
