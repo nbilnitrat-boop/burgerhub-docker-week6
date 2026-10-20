@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Burger Hub - Promotions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Burger Hub</h1>
+  <nav>
+    <a href="form.html">Register</a>
+    <a href="home.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="promotions.html">Promotions</a>
+    <a href="location.html">Location</a>
+    <a href="myorder.html">My Order</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactUs.html">Contact Us</a>
+    <a href="cart.html" class="cart-link">🛒 Cart (<span id="cartCount">0</span>)</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Exclusive Promotions</h2>
+  <div class="promotions">
+    <div class="promo-item">
+      <img src="images/solo-saver.jpg" alt="Solo Saver Package">
+      <h3>Solo Saver Package</h3>
+      <p>Hamburger + Fries + Drink. Perfect for one person!</p>
+      <p class="price">$7.99</p>
+      <button class="btn" onclick="addToCart('Solo Saver Package')">Add to Cart</button>
+    </div>
+
+    <div class="promo-item">
+       <img src="images/group-saver.jpg" alt="Cheeseburger Lovers">
+      <h3>Group Saver Package</h3>
+      <p>4 Hamburgers, 4 Fries, Nuggets, and 4 Cokes — perfect for sharing!</p>
+      <p class="price">$24.99</p>
+      <button class="btn" onclick="addToCart('Group Saver Package')">Add to Cart</button>
+    </div>
+
+    <div class="promo-item">
+      <img src="images/cheese-burger1.jpg" alt="Cheeseburger Lovers">
+      <h3>Cheeseburger Lovers</h3>
+      <p>3 Burgers with double layers of cheese & smoky beef patties.</p>
+      <p class="price">$18.99</p>
+      <button class="btn" onclick="addToCart('Cheeseburger Lovers')">Add to Cart</button>
+    </div>
+  </div>
+</main>
+
+<footer>© 2025 Burger Hub. All rights reserved.</footer>
+
+<script>
+  function updateCartCount() {
+    const el = document.getElementById('cartCount');
+    const list = JSON.parse(localStorage.getItem('orders')) || [];
+    if(el) el.textContent = list.length;
+  }
+
+  function addToCart(item){
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    orders.push(item);
+    localStorage.setItem('orders', JSON.stringify(orders));
+    updateCartCount();
+    alert(item + " added to cart!");
+  }
+
+  document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+</body>
+</html>

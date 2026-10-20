@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burger Hub - Locations</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Burger Hub</h1>
+    <nav>
+      <a href="form.html">Register</a>
+      <a href="home.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="promotions.html">Promotions</a>
+      <a href="location.html">Location</a>
+      <a href="myorder.html">My Order</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contactUs.html">Contact Us</a>
+      <a href="cart.html" class="cart-link">🛒 Cart (<span id="cartCount">0</span>)</a>
+    </nav>
+  </header>
+
+  <main class="location">
+    <h2>Our Locations</h2>
+    <div class="location-container">
+      <div class="location-item">
+        <h3>New Beverly Hills, Cikarang</h3>
+        <img src="images/location1.jpg" alt="New Beverly Hills, Cikarang">
+        <p>Visit our cozy Burger Hub branch located in New Beverly Hills, Cikarang — the perfect spot to enjoy your favorite burgers with friends and family!</p>
+      </div>
+
+      <div class="location-item">
+        <h3>Student Boarding House, Cikarang</h3>
+        <img src="images/location2.jpg" alt="Student Boarding House, Cikarang">
+        <p>Our Student Boarding House branch is the ideal hangout for students craving a tasty meal after a long day of classes. Great taste, great vibes!</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>©️ 2025 Burger Hub. All rights reserved.</p>
+  </footer>
+
+<script>
+  function updateCartCount() {
+    const el = document.getElementById('cartCount');
+    const list = JSON.parse(localStorage.getItem('orders')) || [];
+    if (el) el.textContent = list.length;
+  }
+  document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

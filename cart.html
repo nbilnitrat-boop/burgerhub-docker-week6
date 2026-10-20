@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Burger Hub - Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Burger Hub</h1>
+  <nav>
+    <a href="form.html">Register</a>
+    <a href="home.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="promotions.html">Promotions</a>
+    <a href="location.html">Location</a>
+    <a href="myorder.html">My Order</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactUs.html">Contact Us</a>
+    <a href="cart.html" class="cart-link">🛒 Cart (<span id="cartCount">0</span>)</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Your Cart</h2>
+  <div class="cart-container">
+    <ul id="cartItems"></ul>
+    <div style="margin-top:18px;">
+      <button class="btn" onclick="clearCart()">Clear All</button>
+      <button class="btn" onclick="goToCheckout()">Proceed to My Order</button>
+    </div>
+  </div>
+</main>
+
+<footer>© 2025 Burger Hub. All rights reserved.</footer>
+
+<script>
+  const cartCount = document.getElementById('cartCount');
+  const cartItemsEl = document.getElementById('cartItems');
+  let items = JSON.parse(localStorage.getItem('orders')) || [];
+
+  function updateCartUI(){
+    if(cartCount) cartCount.textContent = items.length;
+  }
+
+  function renderCart(){
+    cartItemsEl.innerHTML = '';
+    if(items.length === 0){
+      cartItemsEl.innerHTML = '<li>Your cart is empty.</li>';
+      updateCartUI();
+      return;
+    }
+    items.forEach((it, idx)=>{
+      const li = document.createElement('li');
+      li.innerHTML = `<span>${it}</span>
+        <div>
+          <button class="btn" onclick="addItem(${idx})">Add</button>
+          <button class="btn" onclick="deleteItem(${idx})">Delete</button>
+        </div>`;
+      cartItemsEl.appendChild(li);
+    });
+    updateCartUI();
+  }
+
+  function addItem(index){
+    const clone = items[index];
+    if(clone){
+      items.push(clone);
+      localStorage.setItem('orders', JSON.stringify(items));
+      renderCart();
+    }
+  }
+
+  function deleteItem(index){
+    items.splice(index,1);
+    localStorage.setItem('orders', JSON.stringify(items));
+    renderCart();
+  }
+
+  function clearCart(){
+    items = [];
+    localStorage.removeItem('orders');
+    renderCart();
+  }
+
+  function goToCheckout(){
+    window.location.href = 'myorder.html';
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    items = JSON.parse(localStorage.getItem('orders')) || [];
+    renderCart();
+  });
+</script>
+</body>
+</html>

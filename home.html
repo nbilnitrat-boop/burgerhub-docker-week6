@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Burger Hub - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Burger Hub</h1>
+  <nav>
+    <a href="form.html">Register</a>
+    <a href="home.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="promotions.html">Promotions</a>
+    <a href="location.html">Location</a>
+    <a href="myorder.html">My Order</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactUs.html">Contact Us</a>
+    <a href="cart.html" class="cart-link">🛒 Cart (<span id="cartCount">0</span>)</a>
+  </nav>
+</header>
+
+<main class="home-main">
+  <div>
+    <h2>Welcome to Burger Hub</h2>
+    <p>Enjoy the best burgers, fries, and drinks in town. Fresh, fast, and friendly!</p>
+  </div>
+
+  <!-- 🍟 Coming Soon Section -->
+  <h3 class="coming-soon">New Items Coming Soon</h3>
+
+  <!-- 🍔 Featured Menu Table -->
+  <table class="menu-table">
+    <thead>
+      <tr>
+        <th>Burger</th>
+        <th>Ingredients</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Classic Beef Burger</td>
+        <td>Beef patty, cheddar cheese, lettuce, tomato</td>
+      </tr>
+      <tr>
+        <td>Crispy Chicken Burger</td>
+        <td>Fried chicken fillet, pickles, mayo</td>
+      </tr>
+      <tr>
+        <td>Double Fish Fillet</td>
+        <td>Fish fillet, tartar sauce, lettuce</td>
+      </tr>
+      <tr>
+        <td>Veggie Delight Burger</td>
+        <td>Grilled veggie patty, tomato, lettuce</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <button class="btn" onclick="location.href='menu.html'">Order Now</button>
+  </div>
+</main>
+
+<footer>© 2025 Burger Hub. All rights reserved.</footer>
+
+<script>
+  function updateCartCount() {
+    const el = document.getElementById('cartCount');
+    const list = JSON.parse(localStorage.getItem('orders')) || [];
+    if (el) el.textContent = list.length;
+  }
+  document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+</body>
+</html>

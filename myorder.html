@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Burger Hub - My Order</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Burger Hub</h1>
+  <nav>
+    <a href="form.html">Register</a>
+    <a href="home.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="promotions.html">Promotions</a>
+    <a href="location.html">Location</a>
+    <a href="myorder.html">My Order</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactUs.html">Contact Us</a>
+    <a href="cart.html" class="cart-link">🛒 Cart (<span id="cartCount">0</span>)</a>
+  </nav>
+</header>
+
+<main>
+  <h2>My Order</h2>
+
+  <div class="order-box">
+    <form id="orderForm">
+      <label for="custName">Customer Name:</label>
+      <input id="custName" type="text" required>
+
+      <label>Your Selected Items:</label>
+      <ul type="disc">
+        <li><div id="orderList"></div></li>
+      </ul>
+
+      <label for="custLoc">Delivery Location:</label>
+      <input id="custLoc" type="text" placeholder="e.g. New Beverly Hills, Cikarang" required>
+
+      <button type="submit" class="btn">Submit Order</button>
+    </form>
+
+    <div id="confirmation" class="confirmation" style="display:none;"></div>
+  </div>
+</main>
+
+<footer>©️ 2025 Burger Hub. All rights reserved.</footer>
+
+<script>
+  function updateCartCount() {
+    const el = document.getElementById('cartCount');
+    const list = JSON.parse(localStorage.getItem('orders')) || [];
+    if(el) el.textContent = list.length;
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    updateCartCount();
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    const listEl = document.getElementById('orderList');
+
+    if(orders.length === 0){
+      listEl.innerHTML = '<li>No items in cart. Add from Menu or Promotions.</li>';
+    } else {
+      listEl.innerHTML = '';
+      orders.forEach((it, idx)=>{
+        const li = document.createElement('li');
+        li.textContent = it;
+        listEl.appendChild(li);
+      });
+    }
+
+    document.getElementById('orderForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      
+      localStorage.removeItem('orders');
+      updateCartCount();
+      document.getElementById('confirmation').textContent = "✅ Order Submitted Successfully!";
+      document.getElementById('confirmation').style.display = 'block';
+      document.getElementById('orderList').innerHTML = '';
+      this.reset();
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Burger Hub - About Us</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Burger Hub</h1>
+  <nav>
+    <a href="form.html">Register</a>
+    <a href="home.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="promotions.html">Promotions</a>
+    <a href="location.html">Location</a>
+    <a href="myorder.html">My Order</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactUs.html">Contact Us</a>
+    <a href="cart.html" class="cart-link">🛒 Cart (<span id="cartCount">0</span>)</a>
+  </nav>
+</header>
+
+<main>
+  <h2>About Burger Hub</h2>
+  <p style="max-width:720px;margin:0 auto;color:#444;">
+    Burger Hub was founded with one simple mission to bring mouth-watering, affordable burgers to students, families, and burger lovers everywhere. What started as a small corner stall quickly became a community favorite, known for our juicy patties, crispy fries, and fun, welcoming vibe.
+
+At Burger Hub, we believe great food brings people together. Every burger we serve is made fresh from perfectly seasoned beef and melty cheese to crisp lettuce and soft, toasted buns. Whether you're grabbing a quick bite between classes or hanging out with friends after a long day, weve got the perfect meal waiting for you.
+
+Come visit us at New Beverly Hills, Cikarang, or the Student Boarding House and experience the taste, energy, and passion that make Burger Hub more than just a burger place — it's your local hangout for good food and good times! 🍔🔥
+  </p>
+</main>
+
+<footer>© 2025 Burger Hub. All rights reserved.</footer>
+
+<script>
+  function updateCartCount(){ const el = document.getElementById('cartCount'); const list = JSON.parse(localStorage.getItem('orders'))||[]; if(el) el.textContent = list.length; }
+  document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+</body>
+</html>
